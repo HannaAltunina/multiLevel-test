@@ -1,25 +1,30 @@
 var ENTER_KEYCODE = 13;
-var ESC_KEYCODE = 27;
 
 var mainNav = document.querySelector('.main-nav');
-var navToggle = document.querySelector('.header__toggle');
+var headerToggle = document.querySelector('.header__toggle');
+var mainNavToggles = document.querySelectorAll('.main-nav__toggle');
+var aboutToggle = document.querySelector('.about-toggle');
+var teamToggle = document.querySelector('.team-toggle');
+var historyToggle = document.querySelector('.history-toggle');
+var sportToggle = document.querySelector('.sport-toggle');
+
 
 function openMainNav() {
   mainNav.classList.remove('main-nav--closed');
   mainNav.classList.add('main-nav');
-  navToggle.classList.remove('header__toggle--open');
-  navToggle.classList.add('header__toggle--close');
+  headerToggle.classList.remove('header__toggle--open');
+  headerToggle.classList.add('header__toggle--close');
 }
 
 function closeMainNav() {
   mainNav.classList.add('main-nav--closed');
   mainNav.classList.remove('main-nav');
-  navToggle.classList.remove('header__toggle--close');
-  navToggle.classList.add('header__toggle--open');
+  headerToggle.classList.remove('header__toggle--close');
+  headerToggle.classList.add('header__toggle--open');
 }
 
 function onNavToggleClick() {
-  if (navToggle.classList.contains('header__toggle--close')) {
+  if (headerToggle.classList.contains('header__toggle--close')) {
     closeMainNav();
   } else {
     openMainNav();
@@ -28,7 +33,7 @@ function onNavToggleClick() {
 
 function onNavToggleEnterPress(evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
-    if (navToggle.classList.contains('header__toggle--close')) {
+    if (headerToggle.classList.contains('header__toggle--close')) {
       closeMainNav();
     } else {
       openMainNav();
@@ -36,5 +41,44 @@ function onNavToggleEnterPress(evt) {
   }
 }
 
-navToggle.addEventListener('click', onNavToggleClick);
-navToggle.addEventListener('keyboard', onNavToggleEnterPress);
+function openSubMenu() {
+  var relValue = document.activeElement.getAttribute('rel');
+  var allSubMenu = document.querySelectorAll('.main-nav__submenu');
+  allSubMenu.forEach(function (menu) {
+    menu.classList.add('main-nav__submenu--closed');
+    if (menu.getAttribute('rel') === relValue) {
+      menu.classList.remove('main-nav__submenu--closed');
+    }
+  });
+  mainNavToggles.forEach(function (toggle) {
+    toggle.classList.remove('main-nav__toggle--close');
+    toggle.classList.add('main-nav__toggle--open');
+  });
+  document.activeElement.classList.remove('main-nav__toggle--open');
+  document.activeElement.classList.add('main-nav__toggle--close')
+}
+
+function closeSubMenu() {
+  var allSubMenu = document.querySelectorAll('.main-nav__submenu');
+  allSubMenu.forEach(function (menu) {
+    menu.classList.add('main-nav__submenu--closed');
+  });
+  document.activeElement.classList.remove('main-nav__toggle--close');
+  document.activeElement.classList.add('main-nav__toggle--open')
+}
+
+function onMainNavToggleClick() {
+  if (document.activeElement.classList.contains('main-nav__toggle--open')) {
+    openSubMenu();
+  } else {
+    closeSubMenu();
+  }
+}
+
+headerToggle.addEventListener('click', onNavToggleClick);
+headerToggle.addEventListener('keyboard', onNavToggleEnterPress);
+
+aboutToggle.addEventListener('click', onMainNavToggleClick);
+teamToggle.addEventListener('click', onMainNavToggleClick);
+historyToggle.addEventListener('click', onMainNavToggleClick);
+sportToggle.addEventListener('click', onMainNavToggleClick);

@@ -15,25 +15,31 @@
         </a>
       </div>
 
-      <button class="header__toggle header__toggle--close" type="button">
+      <button class="header__toggle header__toggle--open" type="button">
         <span class="visually-hidden">Open menu</span>
       </button>
 
-      <nav class="main-nav">
+      <nav class="main-nav  main-nav--closed">
         <ul class="main-nav__list">
           <li class="main-nav__item">
             <a class="main-nav__link" href="#">Portfolio</a>
           </li>
           <li class="main-nav__item main-nav__item--about">
             <a class="main-nav__link" href="#">About Pen Studio</a>
-            <div class="main-nav__submenu submenu-about submenu-about--closed">
+            <button class="main-nav__toggle main-nav__toggle--open about-toggle" type="button" rel="1">
+              <span class="visually-hidden">Open menu</span>
+            </button>      
+            <div class="main-nav__submenu main-nav__submenu--closed submenu-about" rel="1">
               <ul class="submenu-about__list">
                 <li class="submenu-about__item">
                   <a class="submenu-about__link" href="#">Short History</a>
                 </li>
-                <li class="submenu-about__item">
+                <li class="submenu-about__item submenu-about__item--history">
                   <a class="submenu-about__link" href="#">Long History</a>
-                  <div class="submenu-about__history-sub history-sub history-sub--closed">
+                  <button class="main-nav__toggle main-nav__toggle--open history-toggle" type="button" rel="3">
+                    <span class="visually-hidden">Open menu</span>
+                  </button>            
+                  <div class="main-nav__submenu main-nav__submenu--closed submenu-history" rel="3">
                     <ul class="history-sub__list">
                       <li class="history-sub__item">
                         <a class="history-sub__link" href="#">Prehistoric Period</a>
@@ -53,9 +59,12 @@
                 <li class="submenu-about__item">
                   <a class="submenu-about__link" href="#">Our Office Life</a>
                 </li>
-                <li class="submenu-about__item">
+                <li class="submenu-about__item submenu-about__item--sport">
                   <a class="submenu-about__link" href="#">Our Sport Life</a>
-                  <div class="submenu-about__sport-sub sport-sub sport-sub--closed">
+                  <button class="main-nav__toggle main-nav__toggle--open sport-toggle" type="button" rel="4">
+                    <span class="visually-hidden">Open menu</span>
+                  </button>            
+                  <div class="main-nav__submenu main-nav__submenu--closed submenu-sport" rel="4">
                     <ul class="sport-sub__list">
                       <li class="sport-sub__item">
                         <a class="sport-sub__link" href="#">Sport Bar Meeting 2020</a>
@@ -92,7 +101,10 @@
           </li>
           <li class="main-nav__item main-nav__item--team">
             <a class="main-nav__link" href="#">Our Team</a>
-            <div class="main-nav__submenu submenu-team submenu-team--closed">
+            <button class="main-nav__toggle main-nav__toggle--open team-toggle" type="button" rel="2">
+              <span class="visually-hidden">Open menu</span>
+            </button>      
+            <div class="main-nav__submenu main-nav__submenu--closed submenu-team" rel="2">
               <ul class="submenu-team__list">
                 <li class="submenu-team__item">
                   <a class="submenu-team__link" href="#">Developers</a>
@@ -107,7 +119,7 @@
             <a class="main-nav__link" href="#">Our Clients</a>
           </li>
           <li class="main-nav__item">
-            <a class="main-nav__link" href="#">Contacts</a>
+            <a class="main-nav__link" href="#">Contact us</a>
           </li>
         </ul>
       </nav>

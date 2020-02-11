@@ -49,22 +49,24 @@ img {
 
 .header__logo {
   padding-top: 7px;
-  padding-left: 15px;
+  padding-left: 20px;
 }
 
 .main-nav,
-.submenu-about,
 .history-sub,
-.sport-sub,
-.submenu-team {
+.sport-sub {
   display: block;
-}  
+}
+
+.main-nav__submenu {
+  display: block;
+  background-color: rgb(240, 240, 240);
+}
 
 .main-nav--closed,
-.submenu-about--closed,
+.main-nav__submenu--closed,
 .history-sub--closed,
-.sport-sub--closed,
-.submenu-team--closed {
+.sport-sub--closed {
   display: none;
 }  
 
@@ -73,7 +75,7 @@ img {
   background: #ffffff;
   background-image: url('../img/main-bg.jpg');
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: top center;
   background-size: 100% auto;
 }
 
@@ -93,10 +95,6 @@ img {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.main-nav__submenu {
-  background-color: rgb(240, 240, 240);
 }
 
 .history-sub,
@@ -128,9 +126,15 @@ img {
 .sport-sub__item {
   padding: 0;
   margin: 0;
-  border-bottom: 1px solid #7d7d7d;
+  border-bottom: 1px solid #bababa;
   width: 100%;
 }
+
+.submenu-about__item:first-child,
+.submenu-team__item:first-child {
+  border-top: 1px solid #bababa;
+}
+
 
 .submenu-about__item:last-child,
 .history-sub__item:last-child,
@@ -173,12 +177,16 @@ img {
 }
 
 .main-nav__item--about,
-.main-nav__item--team {
+.main-nav__item--team,
+.submenu-about__item--history,
+.submenu-about__item--sport {
   position: relative;
 }
 
 .main-nav__item--about::before,
-.main-nav__item--team::before {
+.main-nav__item--team::before,
+.submenu-about__item--history::before,
+.submenu-about__item--sport::before {
   content: "";
   position: absolute;
   right: 50px;
@@ -187,6 +195,38 @@ img {
   width: 2px;
   height: 20px;
   background-color: #888888;
+}
+
+.main-nav__toggle {
+  position: absolute;
+  padding: 0;
+  top: 12px;
+  right: 15px;
+  z-index: 2;
+  display: block;
+  background-color: transparent;
+  border: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.main-nav__toggle--close::before,
+.main-nav__toggle--open::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 5px;
+  z-index: 3;
+  width: 20px;
+  height: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='10' viewBox='-1 -1 14 8' stroke='%23888888' stroke-width='2'%3E%3Cline x1='0' y1='6' x2='6' y2='0'/%3E%3Cline x1='5' y1='0' x2='11' y2='6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 20px 10px;
+}
+
+.main-nav__toggle--open::before {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.59406 7.17406L11.7537 2.01424C12.0821 1.68601 12.0821 1.15385 11.7537 0.825783C11.4256 0.497689 10.8935 0.497689 10.5654 0.825783L5.99991 5.39142L1.43457 0.825915C1.10635 0.497821 0.574263 0.497821 0.24617 0.825915C-0.0820566 1.15401 -0.0820566 1.68615 0.24617 2.01437L5.4059 7.17419C5.57002 7.33824 5.7849 7.42017 5.99989 7.42017C6.21498 7.42017 6.43002 7.33808 6.59406 7.17406Z' fill='%23888888'/%3E%3C/svg%3E%0A");
 }
 
 
