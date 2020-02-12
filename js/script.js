@@ -43,26 +43,31 @@ function onNavToggleEnterPress(evt) {
 
 function openSubMenu() {
   var relValue = document.activeElement.getAttribute('rel');
-  var allSubMenu = document.querySelectorAll('.main-nav__submenu');
+  var parentMenu = document.activeElement.parentNode.parentNode;
+  var allSubMenu = parentMenu.querySelectorAll('.main-nav__submenu');
+  var navToggles = parentMenu.querySelectorAll('.main-nav__toggle');
+
   allSubMenu.forEach(function (menu) {
     menu.classList.add('main-nav__submenu--closed');
     if (menu.getAttribute('rel') === relValue) {
       menu.classList.remove('main-nav__submenu--closed');
     }
   });
-  mainNavToggles.forEach(function (toggle) {
+
+  navToggles.forEach(function (toggle) {
     toggle.classList.remove('main-nav__toggle--close');
     toggle.classList.add('main-nav__toggle--open');
   });
+
   document.activeElement.classList.remove('main-nav__toggle--open');
   document.activeElement.classList.add('main-nav__toggle--close')
 }
 
 function closeSubMenu() {
-  var allSubMenu = document.querySelectorAll('.main-nav__submenu');
-  allSubMenu.forEach(function (menu) {
-    menu.classList.add('main-nav__submenu--closed');
-  });
+  var parentContainer = document.activeElement.parentNode;
+  var subMenu = parentContainer.querySelector('.main-nav__submenu');
+  
+  subMenu.classList.add('main-nav__submenu--closed');
   document.activeElement.classList.remove('main-nav__toggle--close');
   document.activeElement.classList.add('main-nav__toggle--open')
 }

@@ -97,8 +97,8 @@ img {
   padding: 0;
 }
 
-.history-sub,
-.sport-sub {
+.submenu-history,
+.submenu-sport {
   background-color: rgb(237, 226, 217);
 }
 
@@ -134,6 +134,12 @@ img {
 .submenu-team__item:first-child {
   border-top: 1px solid #bababa;
 }
+
+.history-sub__item:first-child,
+.sport-sub__item:first-child {
+  border-top: 1px solid #bababa;
+}
+
 
 
 .submenu-about__item:last-child,
