@@ -9,9 +9,6 @@ var teamToggle = document.querySelector('.team-toggle');
 var historyToggle = document.querySelector('.history-toggle');
 var sportToggle = document.querySelector('.sport-toggle');
 var mainNavLinks = document.querySelectorAll('.main-nav__link');
-// var aboutMenu = document.querySelector('.main-nav__link--about');
-// var teamMenu = document.querySelector('.main-nav__link--team');
-
 
 function openMainNav() {
   mainNav.classList.remove('main-nav--closed');
@@ -46,17 +43,17 @@ function onNavToggleEnterPress(evt) {
 }
 
 function openSubMenu() {
-  var relValue = document.activeElement.getAttribute('rel');
-  var parentMenu = document.activeElement.parentNode.parentNode;
+  var activeToggle = document.activeElement;
+  var parentContainer = activeToggle.closest('li');
+  var parentMenu = parentContainer.parentElement;
   var allSubMenu = parentMenu.querySelectorAll('.main-nav__submenu');
   var navToggles = parentMenu.querySelectorAll('.main-nav__toggle');
 
   allSubMenu.forEach(function (menu) {
     menu.classList.add('main-nav__submenu--closed');
-    if (menu.getAttribute('rel') === relValue) {
-      menu.classList.remove('main-nav__submenu--closed');
-    }
   });
+
+  parentContainer.querySelector('.main-nav__submenu').classList.remove('main-nav__submenu--closed');
 
   navToggles.forEach(function (toggle) {
     toggle.classList.remove('main-nav__toggle--close');

@@ -1,3 +1,5 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 body {
   font-family: 'Roboto', 'Arial', sans-serif;
   font-size: 14px;
@@ -149,7 +151,9 @@ img {
 }
 
 .logo__image {
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
   width: 40px;
   height: 40px;
 }
@@ -246,11 +250,15 @@ img {
   }
 
   .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
   .logo__image {
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
     width: 60px;
     height: 60px;
   }
@@ -275,17 +283,26 @@ img {
   .submenu-team__list,
   .submenu-history__list,
   .submenu-sport__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
   .submenu-history__list,
   .submenu-sport__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 
   .submenu-history,
   .submenu-sport {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     background-color: rgb(240, 240, 240);
   }
@@ -316,8 +333,3 @@ img {
     padding: 10px 10px 10px 110px;
   }
 }
-
-
-
-
-
