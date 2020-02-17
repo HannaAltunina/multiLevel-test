@@ -1,4 +1,5 @@
 var ENTER_KEYCODE = 13;
+var DESKTOP_WIDTH = 1150;
 
 var mainNav = document.querySelector('.main-nav');
 var headerToggle = document.querySelector('.header__toggle');
@@ -7,6 +8,9 @@ var aboutToggle = document.querySelector('.about-toggle');
 var teamToggle = document.querySelector('.team-toggle');
 var historyToggle = document.querySelector('.history-toggle');
 var sportToggle = document.querySelector('.sport-toggle');
+var mainNavLinks = document.querySelectorAll('.main-nav__link');
+// var aboutMenu = document.querySelector('.main-nav__link--about');
+// var teamMenu = document.querySelector('.main-nav__link--team');
 
 
 function openMainNav() {
@@ -60,13 +64,14 @@ function openSubMenu() {
   });
 
   document.activeElement.classList.remove('main-nav__toggle--open');
-  document.activeElement.classList.add('main-nav__toggle--close')
+  document.activeElement.classList.add('main-nav__toggle--close');
+  document.activeElement.scrollIntoView(top);
 }
 
 function closeSubMenu() {
   var parentContainer = document.activeElement.parentNode;
   var subMenu = parentContainer.querySelector('.main-nav__submenu');
-  
+
   subMenu.classList.add('main-nav__submenu--closed');
   document.activeElement.classList.remove('main-nav__toggle--close');
   document.activeElement.classList.add('main-nav__toggle--open')
@@ -80,6 +85,30 @@ function onMainNavToggleClick() {
   }
 }
 
+function closeHorisontalSubMenu() {
+  var allSubMenu = mainNav.querySelectorAll('.main-nav__submenu');
+  allSubMenu.forEach(function (menu) {
+    menu.classList.add('main-nav__submenu--closed');
+  });
+}
+
+function onMouseOver(evt) {
+  if (window.innerWidth >= DESKTOP_WIDTH) {
+  closeHorisontalSubMenu()
+  var link = evt.srcElement;
+  var relValue = link.getAttribute('rel');
+  var allSubMenu = mainNav.querySelectorAll('.main-nav__submenu');
+
+  allSubMenu.forEach(function (menu) {
+    menu.classList.add('main-nav__submenu--closed');
+    if (menu.getAttribute('rel') === relValue) {
+      menu.classList.remove('main-nav__submenu--closed');
+    }
+  });
+  } else
+  return;
+}
+
 headerToggle.addEventListener('click', onNavToggleClick);
 headerToggle.addEventListener('keyboard', onNavToggleEnterPress);
 
@@ -87,3 +116,7 @@ aboutToggle.addEventListener('click', onMainNavToggleClick);
 teamToggle.addEventListener('click', onMainNavToggleClick);
 historyToggle.addEventListener('click', onMainNavToggleClick);
 sportToggle.addEventListener('click', onMainNavToggleClick);
+
+mainNavLinks.forEach(function (link) {
+  link.addEventListener('mouseover', onMouseOver);
+});
