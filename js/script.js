@@ -10,6 +10,7 @@ var historyToggle = document.querySelector('.history-toggle');
 var sportToggle = document.querySelector('.sport-toggle');
 var mainNavLinks = document.querySelectorAll('.main-nav__link');
 
+
 function openMainNav() {
   mainNav.classList.remove('main-nav--closed');
   mainNav.classList.add('main-nav');
@@ -43,9 +44,8 @@ function onNavToggleEnterPress(evt) {
 }
 
 function openSubMenu() {
-  var activeToggle = document.activeElement;
-  var parentContainer = activeToggle.closest('li');
-  var parentMenu = parentContainer.parentElement;
+  var parentMenu = document.activeElement.parentNode.parentNode;
+  var parentContainer = document.activeElement.parentNode;
   var allSubMenu = parentMenu.querySelectorAll('.main-nav__submenu');
   var navToggles = parentMenu.querySelectorAll('.main-nav__toggle');
 
