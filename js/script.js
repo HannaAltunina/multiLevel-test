@@ -1,5 +1,7 @@
 var ENTER_KEYCODE = 13;
 var DESKTOP_WIDTH = 1150;
+var X_MARGIN = 0;
+var Y_MARGIN = -10;
 
 var mainNav = document.querySelector('.main-nav');
 var headerToggle = document.querySelector('.header__toggle');
@@ -63,6 +65,7 @@ function openSubMenu() {
   document.activeElement.classList.remove('main-nav__toggle--open');
   document.activeElement.classList.add('main-nav__toggle--close');
   document.activeElement.scrollIntoView(top);
+  window.scrollBy(X_MARGIN, Y_MARGIN);
 }
 
 function closeSubMenu() {
